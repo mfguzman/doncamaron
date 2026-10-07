@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camarón Premium Fresco | Selección de Calidad Superior</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B192C',
+                            900: '#070F1E',
+                            950: '#030712'
+                        },
+                        coral: {
+                            400: '#FF8A65',
+                            500: '#FF5722',
+                            600: '#E64A19',
+                            700: '#D84315'
+                        },
+                        sea: {
+                            50: '#F0F7FF',
+                            100: '#E0EFFE',
+                            500: '#0284C7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .dark-glass {
+            background: rgba(11, 25, 44, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(7, 15, 30, 0.88) 0%, rgba(11, 25, 44, 0.7) 100%);
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.4);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 35px rgba(255, 87, 34, 0.6);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070F1E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF5722;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-coral-500 selection:text-white">
+
+    <!-- Header / Nav -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between dark-glass rounded-2xl px-5 py-3 shadow-xl">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-coral-600 to-coral-400 flex items-center justify-center text-white shadow-md transform group-hover:rotate-12 transition-transform">
+                        <i class="fa-solid font-bold text-xl fa-shrimp"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-xl sm:text-2xl tracking-tight text-white block leading-none">Don Camarón</span>
+                        <span class="text-[10px] text-coral-400 font-medium tracking-widest uppercase">Selección Gourmet</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-200">
+                    <a href="#beneficios" class="hover:text-coral-400 transition-colors">¿Por qué elegirnos?</a>
+                    <a href="#presentaciones" class="hover:text-coral-400 transition-colors">Precios</a>
+                    <a href="#calculadora" class="hover:text-coral-400 transition-colors">Cotizar Pedido</a>
+                    <a href="#galeria" class="hover:text-coral-400 transition-colors">Galería Real</a>
+                    <a href="#faq" class="hover:text-coral-400 transition-colors">Preguntas</a>
+                </div>
+
+                <!-- CTA Header Button -->
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/584128029234?text=Hola,%20quisiera%20agendar%20un%20pedido%20de%20camarones%20premium" target="_blank" rel="noopener noreferrer" 
+                       class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-semibold px-4 py-2.5 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-sm">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>0412-8029234</span>
+                    </a>
+                    
+                    <!-- Mobile menu toggle -->
+                    <button id="mobile-menu-btn" class="md:hidden text-white text-2xl focus:outline-none p-1" aria-label="Abrir menú">
+                        <i class="fa-solid fa-bars" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation Overlay -->
+            <div id="mobile-menu" class="hidden md:hidden mt-3 dark-glass rounded-2xl p-6 flex flex-col gap-4 text-white font-medium border border-white/10 shadow-2xl animate-fade-in">
+                <a href="#beneficios" class="py-2 border-b border-white/10 hover:text-coral-400 transition-colors">¿Por qué elegirnos?</a>
+                <a href="#presentaciones" class="py-2 border-b border-white/10 hover:text-coral-400 transition-colors">Precios y Presentaciones</a>
+                <a href="#calculadora" class="py-2 border-b border-white/10 hover:text-coral-400 transition-colors">Calculadora de Pedido</a>
+                <a href="#galeria" class="py-2 border-b border-white/10 hover:text-coral-400 transition-colors">Galería Real</a>
+                <a href="#faq" class="py-2 hover:text-coral-400 transition-colors">Preguntas Frecuentes</a>
+                
+                <a href="https://wa.me/584128029234?text=Hola,%20quisiera%20agendar%20un%20pedido%20de%20camarones%20premium" target="_blank" rel="noopener noreferrer" 
+                   class="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl shadow-lg mt-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Agendar Pedido Directo</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-navy-950">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&q=80&w=2000" 
+                 alt="Camarones limpios frescos" 
+                 class="w-full h-full object-cover object-center opacity-40 scale-105 transform animate-pulse duration-10000"
+                 onerror="this.src='https://placehold.co/1920x1080/070F1E/FFFFFF?text=Camarones+Premium'">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <!-- Decorative Glow Blur -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-coral-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 bg-coral-500/10 border border-coral-500/30 rounded-full px-4 py-1.5 mb-6 text-coral-400 font-semibold text-xs sm:text-sm tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-coral-500 animate-ping"></span>
+                        OFERTA ESPECIAL TEMPORADA
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight mb-6">
+                        Camarón Premium Fresco directo a tu cocina
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                        Camarones limpios, desvenados y listos para cocinar. De la pesca seleccionada a tu mesa con el estándar gastronómico que buscas.
+                    </p>
+
+                    <!-- Feature Bullets -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10 text-sm text-slate-200">
+                        <div class="flex items-center gap-2 bg-white/5 backdrop-blur px-3.5 py-2 rounded-xl border border-white/10">
+                            <i class="fa-solid fa-circle-check text-coral-400"></i>
+                            <span>100% Garantía de Peso Real</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 backdrop-blur px-3.5 py-2 rounded-xl border border-white/10">
+                            <i class="fa-solid fa-circle-check text-coral-400"></i>
+                            <span>Limpieza Profesional</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-white/5 backdrop-blur px-3.5 py-2 rounded-xl border border-white/10">
+                            <i class="fa-solid fa-truck-fast text-coral-400"></i>
+                            <span>Despacho Domicilio / Mayor</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://wa.me/584128029234?text=Hola,%20quisiera%20agendar%20un%20pedido%20de%20camarones%20premium" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-coral-500 to-coral-600 hover:from-coral-600 hover:to-coral-700 text-white font-bold px-8 py-4 rounded-2xl text-lg glow-effect transition-all transform hover:-translate-y-1">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <span>Agende su Pedido</span>
+                        </a>
+
+                        <a href="#calculadora" 
+                           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-4 rounded-2xl text-base border border-white/20 transition-all backdrop-blur">
+                            <i class="fa-solid fa-calculator text-slate-300"></i>
+                            <span>Calcular Precio</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right Card (Product Highlight Card) -->
+                <div class="lg:col-span-5">
+                    <div class="relative max-w-md mx-auto">
+                        <!-- Card Border Gradient -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-coral-500 to-blue-600 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                        
+                        <div class="relative bg-navy-900 border border-slate-700/60 rounded-3xl p-6 sm:p-8 text-white shadow-2xl">
+                            <!-- Floating Tag -->
+                            <div class="absolute -top-4 -right-4 bg-gradient-to-r from-amber-500 to-coral-500 text-white font-extrabold px-4 py-1.5 rounded-full text-xs shadow-lg uppercase tracking-wider flex items-center gap-1">
+                                <i class="fa-solid fa-fire"></i> MÁS VENDIDO
+                            </div>
+
+                            <div class="mb-4">
+                                <span class="text-xs uppercase tracking-widest text-slate-400 font-semibold">Oferta Promocional</span>
+                                <h3 class="text-2xl font-bold text-white mt-1">Empaque Premium 1 KG</h3>
+                            </div>
+
+                            <!-- Price Tag -->
+                            <div class="my-6 p-4 rounded-2xl bg-white/5 border border-white/10 flex items-baseline justify-between">
+                                <div>
+                                    <span class="text-slate-400 text-sm block">Precio especial</span>
+                                    <span class="text-4xl font-extrabold text-coral-400 tracking-tight">$16 <span class="text-lg font-medium text-slate-300">USD / kg</span></span>
+                                </div>
+                                <span class="text-xs bg-emerald-500/20 text-emerald-400 font-bold px-3 py-1 rounded-full border border-emerald-500/30">
+                                    Ahorras 20%
+                                </span>
+                            </div>
+
+                            <!-- Highlights -->
+                            <ul class="space-y-3 text-sm text-slate-300 mb-8">
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                    <span>Camarón de talla grande (Seleccionado).</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                    <span>Cadena de frío conservada al 100%.</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <i class="fa-solid fa-check text-emerald-400 mt-1"></i>
+                                    <span>Empacado sellado de alta higiene.</span>
+                                </li>
+                            </ul>
+
+                            <!-- Quick Action Button -->
+                            <a href="https://wa.me/584128029234?text=Hola,%20deseo%20comprar%20la%20Oferta%20de%20Camar%C3%B3n%20Premium%20de%2016$" 
+                               target="_blank" rel="noopener noreferrer" 
+                               class="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm uppercase tracking-wider">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                Pedir Oferta de $16
+                            </a>
+
+                            <div class="mt-4 text-center">
+                                <span class="text-xs text-slate-400 flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-shield-halved text-coral-400"></i>
+                                    Atención inmediata vía WhatsApp: 0412-8029234
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section: ¿Por qué elegirnos? -->
+    <section id="beneficios" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-coral-600 font-bold text-sm uppercase tracking-widest">Garantía de Excelencia</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-800 mt-2">¿Por qué nuestro camarón marca la diferencia?</h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">No vendemos camarón congelado de supermercado lleno de agua. Entregamos un producto fresco, carnoso y procesado bajo los más estrictos estándares sanitarios.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-coral-200 transition-all hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-coral-500/10 rounded-2xl flex items-center justify-center text-coral-600 text-2xl mb-6 group-hover:bg-coral-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-800 mb-3">Frescura Garantizada</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Procesado rápido respetando la cadena de frío para conservar todo el sabor natural y la firmeza del mar.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-coral-200 transition-all hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-coral-500/10 rounded-2xl flex items-center justify-center text-coral-600 text-2xl mb-6 group-hover:bg-coral-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-800 mb-3">Limpios & Desvenados</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Directo al sartén o a la olla. Ahorras tiempo de preparación en tu cocina o restaurante sin merma molesta.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-coral-200 transition-all hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-coral-500/10 rounded-2xl flex items-center justify-center text-coral-600 text-2xl mb-6 group-hover:bg-coral-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-800 mb-3">Peso Exacto 100%</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Cero exceso de hielo. Pagas exactamente la cantidad de proteína de camarón que recibes en tu empaque.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-coral-200 transition-all hover:shadow-xl group">
+                    <div class="w-14 h-14 bg-coral-500/10 rounded-2xl flex items-center justify-center text-coral-600 text-2xl mb-6 group-hover:bg-coral-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-800 mb-3">Entregas & Mayorista</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Surtimos a familias, chef particulares y negocios gastronómicos con despachos puntuales en zona.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Presentaciones y Precios -->
+    <section id="presentaciones" class="py-20 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-coral-400 font-bold text-sm uppercase tracking-widest">Catálogo Transparente</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Nuestras Presentaciones</h2>
+                <p class="text-slate-400 mt-4 text-base">Selecciona la opción que mejor se adapte a tu hogar o establecimiento comercial.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-stretch">
+                <!-- Option 1 -->
+                <div class="bg-navy-800 border border-slate-700/80 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-500 transition-all">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400 font-semibold">Uso Hogar</div>
+                        <h3 class="text-2xl font-bold text-white mt-2">Kilo Individual</h3>
+                        <p class="text-slate-400 text-sm mt-2">Perfecto para una cena especial o preparar varias porciones familiares.</p>
+                        
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-white">$16</span>
+                            <span class="text-slate-400 text-sm"> / Kilo</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-300 border-t border-slate-700/60 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coral-400"></i> 1 KG de Camarón Limpio</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coral-400"></i> Empacado al vacío / Sellado</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coral-400"></i> Listo para sazonar</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/584128029234?text=Hola,%20deseo%20ordenar%201%20Kilo%20de%20Camar%C3%B3n%20por%2016$" 
+                       target="_blank" rel="noopener noreferrer"
+                       class="mt-8 w-full block text-center bg-slate-700 hover:bg-slate-600 text-white font-bold py-3.5 rounded-xl transition-colors text-sm">
+                        Agendar 1 Kilo ($16)
+                    </a>
+                </div>
+
+                <!-- Option 2 (Featured) -->
+                <div class="bg-gradient-to-b from-navy-800 to-navy-900 border-2 border-coral-500 rounded-3xl p-8 flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-2">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-coral-500 text-white font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                        Pack Recomendado
+                    </div>
+
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-coral-400 font-semibold mt-2">Combo Familiar / Eventos</div>
+                        <h3 class="text-2xl font-bold text-white mt-2">Combo 3 Kilos</h3>
+                        <p class="text-slate-300 text-sm mt-2">La opción más solicitada. Ahorra tiempo y asegura camarón de máxima frescura para el fin de semana.</p>
+                        
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-coral-400">$48</span>
+                            <span class="text-slate-300 text-sm"> / 3 Kilos ($16/kg)</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-200 border-t border-slate-700 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-coral-400"></i> 3 Bolsas de 1 KG c/u</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-coral-400"></i> Selección de talla preferencial</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-coral-400"></i> Entrega prioritaria programada</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/584128029234?text=Hola,%20quisiera%20pedir%20el%20Combo%20de%203%20Kilos%20por%2048$" 
+                       target="_blank" rel="noopener noreferrer"
+                       class="mt-8 w-full block text-center bg-coral-500 hover:bg-coral-600 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg text-sm glow-effect">
+                        Pedir Combo ($48)
+                    </a>
+                </div>
+
+                <!-- Option 3 -->
+                <div class="bg-navy-800 border border-slate-700/80 rounded-3xl p-8 flex flex-col justify-between hover:border-slate-500 transition-all">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-slate-400 font-semibold">Restaurantes / Negocios</div>
+                        <h3 class="text-2xl font-bold text-white mt-2">Mayorista (5KG+)</h3>
+                        <p class="text-slate-400 text-sm mt-2">Atención especial para cevicherías, restaurantes de mariscos y eventos gastronómicos grandes.</p>
+                        
+                        <div class="my-6">
+                            <span class="text-3xl font-extrabold text-white">Consultar Precio</span>
+                            <span class="text-slate-400 text-xs block mt-1">Atención personalizada</span>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-300 border-t border-slate-700/60 pt-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coral-400"></i> Surtido constante garantizado</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coral-400"></i> Facturación disponible</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-coral-400"></i> Canal directo de despacho</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/584128029234?text=Hola,%20me%20interesa%20comprar%20camarones%20al%20mayor%20para%20mi%20negocio" 
+                       target="_blank" rel="noopener noreferrer"
+                       class="mt-8 w-full block text-center bg-slate-700 hover:bg-slate-600 text-white font-bold py-3.5 rounded-xl transition-colors text-sm">
+                        Cotizar al Mayor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator -->
+    <section id="calculadora" class="py-20 bg-slate-100 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-2xl p-6 sm:p-10 border border-slate-200">
+                <div class="text-center mb-8">
+                    <span class="text-coral-600 font-bold text-xs uppercase tracking-widest bg-coral-50 px-3 py-1 rounded-full border border-coral-200">Calculadora Interactiva</span>
+                    <h2 class="text-3xl font-extrabold text-navy-800 mt-3">Personaliza y Cotiza tu Pedido</h2>
+                    <p class="text-slate-600 text-sm mt-1">Ajusta los kilos que necesitas y genera el pedido instantáneo por WhatsApp.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <!-- Controls -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">
+                            ¿Cuántos Kilos deseas ordenar?
+                        </label>
+                        
+                        <!-- Stepper input -->
+                        <div class="flex items-center gap-3 mb-6">
+                            <button id="btn-minus" class="w-12 h-12 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 font-bold text-xl transition-colors flex items-center justify-center">
+                                -
+                            </button>
+                            <input type="number" id="kilos-input" value="1" min="1" max="50" class="w-24 h-12 text-center text-2xl font-extrabold text-navy-800 bg-white border-2 border-slate-300 rounded-xl focus:border-coral-500 focus:outline-none">
+                            <button id="btn-plus" class="w-12 h-12 rounded-xl bg-coral-500 text-white hover:bg-coral-600 font-bold text-xl transition-colors flex items-center justify-center">
+                                +
+                            </button>
+                            <span class="font-semibold text-slate-600">KG</span>
+                        </div>
+
+                        <!-- Range slider -->
+                        <div class="mb-4">
+                            <input type="range" id="kilos-range" min="1" max="20" value="1" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-coral-500">
+                            <div class="flex justify-between text-xs text-slate-400 mt-1 font-medium">
+                                <span>1 KG</span>
+                                <span>10 KG</span>
+                                <span>20 KG+</span>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Note -->
+                        <div class="text-xs text-slate-500 flex items-center gap-2 mt-4">
+                            <i class="fa-solid fa-truck-fast text-coral-500"></i>
+                            <span>Aceptamos Pago Móvil, Efectivo, Zelle y Nequi.</span>
+                        </div>
+                    </div>
+
+                    <!-- Summary Card -->
+                    <div class="bg-navy-900 text-white p-6 rounded-2xl flex flex-col justify-between border border-navy-800">
+                        <div>
+                            <span class="text-xs text-slate-400 uppercase tracking-widest font-semibold block mb-1">Resumen del Pedido</span>
+                            <div class="flex justify-between items-baseline mb-2">
+                                <span class="text-slate-300">Cantidad:</span>
+                                <span class="text-xl font-bold text-coral-400"><span id="summary-kilos">1</span> KG</span>
+                            </div>
+                            <div class="flex justify-between items-baseline mb-4 border-b border-slate-700 pb-3">
+                                <span class="text-slate-300">Precio Unitario:</span>
+                                <span class="font-semibold text-slate-200">$16.00 USD</span>
+                            </div>
+                            <div class="flex justify-between items-baseline my-4">
+                                <span class="text-lg font-bold">Total estimado:</span>
+                                <span class="text-3xl font-extrabold text-emerald-400" id="total-price">$16 USD</span>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic WhatsApp CTA -->
+                        <a id="dynamic-wa-btn" 
+                           href="https://wa.me/584128029234?text=Hola,%20quiero%20agendar%20un%20pedido%20de%201%20kg%20de%20camarones%20premium%20(Total:%20$16)" 
+                           target="_blank" rel="noopener noreferrer"
+                           class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all text-sm mt-4">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span>Enviar Pedido por WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery: Imágenes Reales -->
+    <section id="galeria" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-coral-600 font-bold text-sm uppercase tracking-widest">Calidad Visual Real</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-navy-800 mt-2">Del Producto a la Mesa</h2>
+                <p class="text-slate-600 mt-4 text-base">Así luce nuestro camarón de selección premium en crudo y en preparaciones listas para disfrutar.</p>
+            </div>
+
+            <!-- Grid of images -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Img 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg aspect-4/3 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&q=80&w=800" 
+                         alt="Camarón fresco limpio" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.src='https://placehold.co/800x600/0B192C/FFFFFF?text=Camaron+Fresco'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span class="text-white font-semibold text-sm">Camarones limpios y desvenados</span>
+                    </div>
+                </div>
+
+                <!-- Img 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg aspect-4/3 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1559737671-1188049a4603?auto=format&fit=crop&q=80&w=800" 
+                         alt="Platillo de camarones salteados" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.src='https://placehold.co/800x600/0B192C/FFFFFF?text=Camarones+Preparados'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span class="text-white font-semibold text-sm">Ideales para al ajillo, salteados o pastas</span>
+                    </div>
+                </div>
+
+                <!-- Img 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg aspect-4/3 bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1535400255456-984241443b29?auto=format&fit=crop&q=80&w=800" 
+                         alt="Ceviche de camarón" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                         onerror="this.src='https://placehold.co/800x600/0B192C/FFFFFF?text=Ceviche+de+Camaron'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                        <span class="text-white font-semibold text-sm">Excelente consistencia para ceviches frescos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-coral-400 font-bold text-sm uppercase tracking-widest">Confianza de Nuestros Clientes</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Lo que dicen quienes ya probaron</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-navy-800 p-8 rounded-2xl border border-slate-700/80 relative">
+                    <div class="text-coral-400 text-xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        "Excelente calidad. Compré 3 kilos para un almuerzo familiar y la frescura fue impecable. Lo mejor es que vienen limpios, directos a la cocina."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-coral-500/20 text-coral-400 flex items-center justify-center font-bold">
+                            MC
+                        </div>
+                        <div>
+                            <span class="font-bold text-sm block text-white">María Camargo</span>
+                            <span class="text-xs text-slate-400">Cliente Particular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-navy-800 p-8 rounded-2xl border border-slate-700/80 relative">
+                    <div class="text-coral-400 text-xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        "Surtimos nuestro restaurante con su camarón. El precio de 16$ es súper competitivo para la calidad que entregan y la puntualidad del servicio."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-coral-500/20 text-coral-400 flex items-center justify-center font-bold">
+                            R
+                        </div>
+                        <div>
+                            <span class="font-bold text-sm block text-white">Restaurante Marea</span>
+                            <span class="text-xs text-slate-400">Cliente Mayorista</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-navy-800 p-8 rounded-2xl border border-slate-700/80 relative">
+                    <div class="text-coral-400 text-xl mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        "El proceso de pedir por WhatsApp fue rapidísimo. Envíe mi dirección, coordinamos el pago y en poco tiempo tenía mis camarones congelados adecuadamente."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-coral-500/20 text-coral-400 flex items-center justify-center font-bold">
+                            AG
+                        </div>
+                        <div>
+                            <span class="font-bold text-sm block text-white">Alejandro Gómez</span>
+                            <span class="text-xs text-slate-400">Cliente Regular</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-coral-600 font-bold text-sm uppercase tracking-widest">Resuelve tus dudas</span>
+                <h2 class="text-3xl font-extrabold text-navy-800 mt-2">Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-navy-800 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-coral-500"></i>
+                        ¿Qué métodos de pago aceptan?
+                    </h3>
+                    <p class="text-slate-600 text-sm pl-7 leading-relaxed">
+                        Aceptamos múltiples opciones para tu comodidad: Pago Móvil, Efectivo ($ USD / Moneda Local según tasa del día), Nequi y Transferencias electrónicas.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-navy-800 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-coral-500"></i>
+                        ¿Cómo vienen presentados los camarones?
+                    </h3>
+                    <p class="text-slate-600 text-sm pl-7 leading-relaxed">
+                        Se entregan en empaques sellados de 1 KG, totalmente limpios y desvenados, manteniendo en todo momento la cadena de frío necesaria para preservar su calidad.
+                    </p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-navy-800 mb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-question text-coral-500"></i>
+                        ¿Cómo agendo un pedido?
+                    </h3>
+                    <p class="text-slate-600 text-sm pl-7 leading-relaxed">
+                        Es sumamente sencillo: puedes utilizar nuestra calculadora de pedidos arriba o hacer clic en cualquier botón de WhatsApp. Te responderemos al instante al <strong>0412-8029234</strong> para confirmar tu dirección y horario de entrega.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="py-16 bg-gradient-to-r from-coral-600 to-coral-500 text-white text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">¿Listo para saborear la mejor calidad?</h2>
+            <p class="text-coral-100 text-lg mb-8 max-w-xl mx-auto">
+                Aprovecha la oferta de Camarón Premium a $16/KG. Haz tu pedido directamente por WhatsApp y te lo preparamos al momento.
+            </p>
+            <a href="https://wa.me/584128029234?text=Hola,%20quisiera%20agendar%20un%20pedido%20de%20camarones%20premium" 
+               target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-3 bg-navy-950 hover:bg-navy-900 text-white font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl transition-all transform hover:-translate-y-1">
+                <i class="fa-brands fa-whatsapp text-2xl text-emerald-400"></i>
+                <span>Agendar Pedido Ahora</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-coral-500 flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fa-solid fa-shrimp"></i>
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-white text-xl block leading-none">Don Camarón</span>
+                        <span class="text-xs text-slate-500">Selección Gourmet Fresca</span>
+                    </div>
+                </div>
+
+                <!-- Contact Direct -->
+                <div class="text-center md:text-right">
+                    <span class="block text-xs uppercase tracking-widest text-slate-500">Atención WhatsApp</span>
+                    <a href="https://wa.me/584128029234" class="text-coral-400 font-bold text-lg hover:underline">
+                        0412-8029234
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-slate-800/80 text-center text-xs text-slate-500">
+                <p>&copy; 2026 Don Camarón. Todos los derechos reservados. Venta y distribución de camarón premium fresco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/584128029234?text=Hola,%20quisiera%20agendar%20un%20pedido%20de%20camarones%20premium" 
+       target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-50 bg-emerald-500 text-white p-4 rounded-full shadow-2xl hover:bg-emerald-600 transition-all transform hover:scale-110 flex items-center justify-center glow-effect group"
+       aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <!-- Tooltip -->
+        <span class="absolute right-16 bg-navy-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl border border-slate-700">
+            Pedir al 0412-8029234
+        </span>
+    </a>
+
+    <script>
+        // Interactive Order Calculator Logic
+        const pricePerKg = 16;
+        const kilosInput = document.getElementById('kilos-input');
+        const kilosRange = document.getElementById('kilos-range');
+        const summaryKilos = document.getElementById('summary-kilos');
+        const totalPrice = document.getElementById('total-price');
+        const dynamicWaBtn = document.getElementById('dynamic-wa-btn');
+        const btnMinus = document.getElementById('btn-minus');
+        const btnPlus = document.getElementById('btn-plus');
+
+        function updateCalculator(val) {
+            let kilos = parseInt(val) || 1;
+            if (kilos < 1) kilos = 1;
+            if (kilos > 99) kilos = 99;
+
+            kilosInput.value = kilos;
+            kilosRange.value = Math.min(kilos, 20);
+            summaryKilos.textContent = kilos;
+
+            const total = kilos * pricePerKg;
+            totalPrice.textContent = `$${total} USD`;
+
+            // Update WhatsApp link text dynamically
+            const message = encodeURIComponent(`Hola, quiero agendar un pedido de ${kilos} kg de camarones premium (Total estimado: $${total} USD)`);
+            dynamicWaBtn.href = `https://wa.me/584128029234?text=${message}`;
+        }
+
+        // Event listeners for calculator
+        kilosInput.addEventListener('input', (e) => updateCalculator(e.target.value));
+        kilosRange.addEventListener('input', (e) => updateCalculator(e.target.value));
+
+        btnMinus.addEventListener('click', () => {
+            let current = parseInt(kilosInput.value) || 1;
+            updateCalculator(current - 1);
+        });
+
+        btnPlus.addEventListener('click', () => {
+            let current = parseInt(kilosInput.value) || 1;
+            updateCalculator(current + 1);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark';
+            }
+        });
+
+        // Close menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars';
+            });
+        });
+    </script>
+</body>
+</html>
